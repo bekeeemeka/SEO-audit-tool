@@ -1,2 +1,84 @@
-<!-- SEO Audit Tool HTML -->
-<html><body><h1>SEO Audit Tool</h1></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SEO Audit Tool — Demo</title>
+  <meta name="description" content="A client-side SEO audit demo (title, meta, headings, images, links, canonical, robots).">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="card header">
+      <div>
+        <h1>SEO Audit Tool <small class="muted">— Demo (Standard)</small></h1>
+        <p class="muted">Enter a publicly accessible URL to run a quick client-side audit. (CORS may block some sites — see README for proxy).</p>
+      </div>
+      <div class="meta-info">
+        <span id="lastRun">Not run yet</span>
+      </div>
+    </header>
+
+    <form id="auditForm" class="card form">
+      <label for="urlInput">Website URL</label>
+      <input type="url" id="urlInput" placeholder="https://example.com" required />
+      <div class="controls">
+        <button type="submit" id="runBtn">Run Audit</button>
+        <button type="button" id="clearBtn" class="secondary">Clear</button>
+      </div>
+    </form>
+
+    <section id="results" class="card hidden" aria-live="polite">
+      <h2>Audit Results</h2>
+
+      <div class="result-block" id="basic">
+        <h3>Basic Metadata</h3>
+        <dl>
+          <dt>Title</dt><dd id="titleResult">—</dd>
+          <dt>Meta Description</dt><dd id="descResult">—</dd>
+          <dt>Canonical</dt><dd id="canonResult">—</dd>
+          <dt>Robots</dt><dd id="robotsResult">—</dd>
+        </dl>
+      </div>
+
+      <div class="result-block" id="headings">
+        <h3>Headings</h3>
+        <p><strong>H1s:</strong></p><pre id="h1s">—</pre>
+        <p><strong>H2s:</strong></p><pre id="h2s">—</pre>
+      </div>
+
+      <div class="result-block" id="content">
+        <h3>Content</h3>
+        <p><strong>Word count:</strong> <span id="wordCount">—</span></p>
+        <p><strong>Estimated reading time:</strong> <span id="readingTime">—</span></p>
+      </div>
+
+      <div class="result-block" id="images">
+        <h3>Images</h3>
+        <p id="imagesSummary">—</p>
+        <pre id="imagesList"></pre>
+      </div>
+
+      <div class="result-block" id="links">
+        <h3>Links</h3>
+        <p><strong>Total links:</strong> <span id="totalLinks">—</span></p>
+        <p><strong>Internal / External:</strong> <span id="internalExternal">—</span></p>
+        <pre id="linkList"></pre>
+      </div>
+
+      <div class="result-block" id="suggestions">
+        <h3>Suggestions</h3>
+        <ul id="suggestionsList">
+        </ul>
+      </div>
+
+    </section>
+
+    <footer class="muted small">
+      <p>Demo created for portfolio. Client-side only; to audit arbitrary sites use a server proxy. See README for deployment & proxy instructions.</p>
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
